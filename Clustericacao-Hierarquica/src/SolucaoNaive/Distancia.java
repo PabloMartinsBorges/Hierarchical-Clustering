@@ -7,35 +7,39 @@ public class Distancia {
 	
 	public Distancia() {
 		
-		d = 0;
+		d = Integer.MAX_VALUE;
 	}
 	
 	
-	public Cluster[] calculaDistancia(ArrayList<Cluster> lista) {
+	public Cluster calculaDistancia(ArrayList<Cluster> lista) {
 		
+		//Array que vai salvar os 2 cluster com a menor distancia
 		Cluster[] menorDis = {null,null}; 
-		double temp = 0;
-		int indC1 = 0, indC2 = 0;
+		double temp = 0; //var temporaria para cada iteracao
+		int indC1 = 0, indC2 = 0; // indice dos clusters
 		
-		for(int i = 0; i<lista.size(); i++) {
+		for(int i = 0; i<lista.size(); i++) { // compara um elemento com os demais da lista
 			for(int j = 0; j < lista.size(); j++) {
-				if(lista.get(i).compareTo(lista.get(j)) == 0) {
+				if(lista.get(i).compareTo(lista.get(j)) == 0) { //garante que o elemento não seja comparado com ele mesmo
 					continue;
 				}
 				
-				temp = Math.sqrt(Math.pow(lista.get(i).x-lista.get(j).x, 2) + Math.pow(lista.get(i).y-lista.get(j).y, 2));
-				if(temp > d) {
+				temp = Math.sqrt(Math.pow(lista.get(i).x-lista.get(j).x, 2) + Math.pow(lista.get(i).y-lista.get(j).y, 2)); //calculo da distancia
+				
+				if(temp < d) {//Salva uma distancia menor que a atual
 					d = temp;
 					
-					indC1 = i;
+					indC1 = i; //salva os indices daquels clusters
 					indC2 = j;
 				}
 			}
 		}
+		//Salva os clusters no array
 		menorDis[0] = lista.get(indC1);
 		menorDis[1] = lista.get(indC2);
 		
-		return menorDis;
+		//retorna o Novo Cluster com a menor distancia
+		return new Cluster(menorDis);
 	}
 	
 }

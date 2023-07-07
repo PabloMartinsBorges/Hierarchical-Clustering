@@ -5,12 +5,15 @@ public class Cluster implements Comparable<Cluster>{
 
 	public int x, y, xAcumulado, yAcumulado, qtdPontos;
     public int[] centroid;
+  //Salva os clusters que o formaram
     public Cluster fEsq, fDir;
     
     
     
     public Cluster(int coordX, int coordY) {
+    	
     	this.x = coordX;
+    	
     	this.y = coordY;
     	
     	 qtdPontos = 1;
@@ -18,6 +21,7 @@ public class Cluster implements Comparable<Cluster>{
     	 centroid[0] = this.x;
          centroid[1] = this.y;
     	 
+         
     	 fEsq = null; 
          fDir = null;
     	
@@ -25,8 +29,8 @@ public class Cluster implements Comparable<Cluster>{
     
     
     public Cluster(Cluster[]c) {
-        this.x =(c[0].xAcumulado+c[0].x+c[1].xAcumulado+c[2].x)/qtdPontos;
-        this.y =(c[0].yAcumulado+c[0].y+c[1].yAcumulado+c[2].y)/qtdPontos;
+        this.x =(c[0].xAcumulado+c[0].x+c[1].xAcumulado+c[1].x)/qtdPontos;
+        this.y =(c[0].yAcumulado+c[0].y+c[1].yAcumulado+c[1].y)/qtdPontos;
         
         qtdPontos++;
         
@@ -37,11 +41,13 @@ public class Cluster implements Comparable<Cluster>{
         fEsq = c[0]; 
         fDir = c[1];
     }
-    
+    /*
     public void atualizaCentroid(int valor[]){
         this.centroid = valor;
     }
+    */
     
+    //metodo que teremina o centroid do novo cluster e chama para atualizar o array
     public void calculaCentroid(ArrayList<Cluster> lista, Cluster[] c){
         this.x = (c[0].x + c[1].x)/2;
         this.y = (c[0].y + c[1].y)/2;
@@ -54,12 +60,14 @@ public class Cluster implements Comparable<Cluster>{
         
     }
     
+    //Pode ser usado???
     public void atribuiFilhos(Cluster filhoEsq, Cluster filhoDir){
         this.fEsq = filhoEsq;
         this.fDir = filhoDir;
         
     }
     
+    //Atualiza a lista de cluster removendo os 2 pontos e salvando o novo
     public static void atualizaClusters(ArrayList<Cluster> lista, Cluster[] retirada, Cluster entrando){
         
         lista.remove(retirada[0]);
