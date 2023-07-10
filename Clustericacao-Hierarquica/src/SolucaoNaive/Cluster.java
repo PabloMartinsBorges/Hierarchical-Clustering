@@ -1,10 +1,11 @@
 package SolucaoNaive;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Cluster implements Comparable<Cluster>{
 
 	public int xAcumulado, yAcumulado, qtdPontos;
-    public int[] coord;
+    public Integer[] coord;
   //Salva os clusters que o formaram
     public Cluster fEsq, fDir;
     
@@ -13,6 +14,8 @@ public class Cluster implements Comparable<Cluster>{
     public Cluster(int coordX, int coordY) {
     	
     	 qtdPontos += 1;
+    	 
+    	 Integer[] coord = new Integer[2];
     	
     	 coord[0] = coordX;
          coord[1] = coordY;
@@ -26,7 +29,7 @@ public class Cluster implements Comparable<Cluster>{
     
     public Cluster(Cluster[]c) {
         
-        qtdPontos += (c[0].qtdPontos+c[1].qtdPontos);
+        qtdPontos = (c[0].qtdPontos+c[1].qtdPontos);
         
         coord[0] = (c[0].coord[0] + c[1].coord[0])/qtdPontos;
         coord[1] = (c[0].coord[1] + c[1].coord[1])/qtdPontos;
@@ -45,15 +48,14 @@ public class Cluster implements Comparable<Cluster>{
         this.centroid = valor;
     }
     */
-    
+    /*
     //metodo que teremina o centroid do novo cluster e chama para atualizar o array
-    public void calculaCentroid(ArrayList<Cluster> lista, Cluster[] c){
+    public static void calculaCentroid(ArrayList<Cluster> lista, Cluster[] c){
         
-        this.atribuiFilhos(c[0],c[1]);
-        Cluster.atualizaClusters(lista, c, this);
+        Cluster.atualizaClusters(lista, c);
         
     }
-    
+    */
     //Pode ser usado???
     public void atribuiFilhos(Cluster filho1, Cluster filho2){
     	if(filho1.compareTo(filho2) <0) {
@@ -66,12 +68,12 @@ public class Cluster implements Comparable<Cluster>{
     }
     
     //Atualiza a lista de cluster removendo os 2 pontos e salvando o novo
-    public static void atualizaClusters(ArrayList<Cluster> lista, Cluster[] retirada, Cluster entrando){
+    public static void atualizaClusters(ArrayList<Cluster> lista, Cluster novo){
         
-        lista.remove(retirada[0]);
-        lista.remove(retirada[1]);
+        lista.remove(novo.fEsq);
+        lista.remove(novo.fDir);
         
-        lista.add(entrando);
+        lista.add(novo);
         
     }
 
@@ -87,6 +89,13 @@ public class Cluster implements Comparable<Cluster>{
 			return -1;
 	}
 
+
+	@Override
+	public String toString() {
+		return "Coord X Coord Y: \n";
+	}
+
+	
     
 	
 }

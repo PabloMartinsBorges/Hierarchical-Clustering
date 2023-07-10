@@ -14,7 +14,7 @@ public class Distancia {
 	public Cluster calculaDistancia(ArrayList<Cluster> lista) {
 		
 		//Array que vai salvar os 2 cluster com a menor distancia
-		Cluster[] menorDis = {null,null}; 
+		Cluster[] menorDis = new Cluster[2]; 
 		double temp = 0; //var temporaria para cada iteracao
 		int indC1 = 0, indC2 = 0; // indice dos clusters
 		
@@ -24,7 +24,7 @@ public class Distancia {
 					continue;
 				}
 				
-				temp = Math.sqrt(Math.pow(lista.get(i).x-lista.get(j).x, 2) + Math.pow(lista.get(i).y-lista.get(j).y, 2)); //calculo da distancia
+				temp = Math.sqrt(Math.pow(lista.get(i).coord[0]-lista.get(j).coord[0], 2) + Math.pow(lista.get(i).coord[1]-lista.get(j).coord[1], 2)); //calculo da distancia
 				
 				if(temp < d) {//Salva uma distancia menor que a atual
 					d = temp;
@@ -38,8 +38,12 @@ public class Distancia {
 		menorDis[0] = lista.get(indC1);
 		menorDis[1] = lista.get(indC2);
 		
+		System.out.print("(" + menorDis[0].toString());
+		System.out.println(menorDis[1].toString() + " )");
 		//retorna o Novo Cluster com a menor distancia
-		return new Cluster(menorDis);
+		
+		Cluster novo = new Cluster(menorDis);
+		return novo;
 	}
 	
 }
