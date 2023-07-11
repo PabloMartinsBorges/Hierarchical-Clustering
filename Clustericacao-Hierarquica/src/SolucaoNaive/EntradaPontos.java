@@ -45,8 +45,9 @@ public class EntradaPontos {
 			System.out.println("novos pontos");
 			//Aqui ele começa a calcular o tempo
 			
-			for(int k = 0; k<tam; k++) {
-				Cluster.atualizaClusters(c, d.calculaDistancia(c));
+			for(int k = 0; k<tam-1; k++) {
+				
+				d.calculaDistancia(c);
 				System.out.println("Clusterizando");
 				
 			}

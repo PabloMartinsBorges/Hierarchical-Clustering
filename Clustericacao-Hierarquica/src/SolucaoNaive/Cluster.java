@@ -4,21 +4,24 @@ import java.util.Arrays;
 
 public class Cluster implements Comparable<Cluster>{
 
-	public int qtdPontos;
-    public int[] coord = {0,0};
+	public int qtdPontos, xAcumulado, yAcumulado;
+    public double[] coord;
   //Salva os clusters que o formaram
     public Cluster fEsq, fDir;
     
     
     
-    public Cluster(int coordX, int coordY) {
+    public Cluster(double coordX, double coordY) {
     	
     	 this.qtdPontos = 1;
     
-    	
+    	 coord = new double[2];
     	 
     	 coord[0] = coordX;
          coord[1] = coordY;
+         
+         xAcumulado = 0;
+        yAcumulado =0;
     	 
          
     	 fEsq = null; 
@@ -31,9 +34,10 @@ public class Cluster implements Comparable<Cluster>{
         
         this.qtdPontos = (c[0].qtdPontos+c[1].qtdPontos);
         
+        coord = new double[2];
         
-        coord[0] = (c[0].coord[0] + c[1].coord[0])/qtdPontos;
-        coord[1] = (c[0].coord[1] + c[1].coord[1])/qtdPontos;
+        coord[0] = (c[0].coord[0] + c[1].coord[0])/this.qtdPontos;
+        coord[1] = (c[0].coord[1] + c[1].coord[1])/this.qtdPontos;
         
         if(c[0].compareTo(c[1]) <0) {
         	fEsq = c[0]; 
@@ -42,6 +46,8 @@ public class Cluster implements Comparable<Cluster>{
         	fEsq = c[1]; 
             fDir = c[0];
         }
+        
+       
         
     }
     /*
@@ -71,12 +77,12 @@ public class Cluster implements Comparable<Cluster>{
     //Atualiza a lista de cluster removendo os 2 pontos e salvando o novo
     public static void atualizaClusters(ArrayList<Cluster> lista, Cluster novo){
         
-        lista.remove(novo.fEsq);
-        lista.remove(novo.fDir);
         
         System.out.println(novo);
         
         lista.add(novo);
+        lista.remove(novo.fDir);
+        lista.remove(novo.fEsq);
         
     }
 
@@ -95,7 +101,7 @@ public class Cluster implements Comparable<Cluster>{
 
 	@Override
 	public String toString() {
-		return "Cluster [qtdPontos=" + qtdPontos +"]";
+		return "Cluster [qtdPontos=" + qtdPontos +" Coord: " + Arrays.toString(coord) +" ]";
 	}
 
 
