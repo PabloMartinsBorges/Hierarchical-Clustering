@@ -7,7 +7,7 @@ public class Main
 	public static void main(String[] args)
 	{
 		
-		EntradaPontos menu = new EntradaPontos(10, 100);
+		EntradaPontos menu = new EntradaPontos(3, 100);
 		
 		
 		menu.testesDezVezes();

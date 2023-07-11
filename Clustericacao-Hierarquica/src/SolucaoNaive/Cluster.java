@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 public class Cluster implements Comparable<Cluster>{
 
-	public int xAcumulado, yAcumulado, qtdPontos;
-    public Integer[] coord;
+	public int qtdPontos;
+    public int[] coord = {0,0};
   //Salva os clusters que o formaram
     public Cluster fEsq, fDir;
     
@@ -13,10 +13,10 @@ public class Cluster implements Comparable<Cluster>{
     
     public Cluster(int coordX, int coordY) {
     	
-    	 qtdPontos += 1;
-    	 
-    	 Integer[] coord = new Integer[2];
+    	 this.qtdPontos = 1;
+    
     	
+    	 
     	 coord[0] = coordX;
          coord[1] = coordY;
     	 
@@ -29,7 +29,8 @@ public class Cluster implements Comparable<Cluster>{
     
     public Cluster(Cluster[]c) {
         
-        qtdPontos = (c[0].qtdPontos+c[1].qtdPontos);
+        this.qtdPontos = (c[0].qtdPontos+c[1].qtdPontos);
+        
         
         coord[0] = (c[0].coord[0] + c[1].coord[0])/qtdPontos;
         coord[1] = (c[0].coord[1] + c[1].coord[1])/qtdPontos;
@@ -73,6 +74,8 @@ public class Cluster implements Comparable<Cluster>{
         lista.remove(novo.fEsq);
         lista.remove(novo.fDir);
         
+        System.out.println(novo);
+        
         lista.add(novo);
         
     }
@@ -92,9 +95,11 @@ public class Cluster implements Comparable<Cluster>{
 
 	@Override
 	public String toString() {
-		return "Coord X Coord Y: \n";
+		return "Cluster [qtdPontos=" + qtdPontos +"]";
 	}
 
+
+	
 	
     
 	

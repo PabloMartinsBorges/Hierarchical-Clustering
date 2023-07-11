@@ -38,8 +38,7 @@ public class Distancia {
 		menorDis[0] = lista.get(indC1);
 		menorDis[1] = lista.get(indC2);
 		
-		System.out.print("(" + menorDis[0].toString());
-		System.out.println(menorDis[1].toString() + " )");
+	System.out.println("Distanciado");
 		//retorna o Novo Cluster com a menor distancia
 		
 		Cluster novo = new Cluster(menorDis);
