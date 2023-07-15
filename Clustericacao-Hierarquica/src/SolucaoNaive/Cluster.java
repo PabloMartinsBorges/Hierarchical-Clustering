@@ -36,8 +36,11 @@ public class Cluster implements Comparable<Cluster>{
         
         coord = new double[2];
         
-        coord[0] = (c[0].coord[0] + c[1].coord[0])/this.qtdPontos;
-        coord[1] = (c[0].coord[1] + c[1].coord[1])/this.qtdPontos;
+        // coord[0] = (c[0].coord[0] + c[1].coord[0])/this.qtdPontos;
+        // coord[1] = (c[0].coord[1] + c[1].coord[1])/this.qtdPontos;
+        
+        coord[0] = (c[0].coord[0] * c[0].qtdPontos + c[1].coord[0] * c[1].qtdPontos) / this.qtdPontos;
+        coord[1] = (c[0].coord[1] * c[0].qtdPontos + c[1].coord[1] * c[1].qtdPontos) / this.qtdPontos;
         
         if(c[0].compareTo(c[1]) <0) {
         	fEsq = c[0]; 
