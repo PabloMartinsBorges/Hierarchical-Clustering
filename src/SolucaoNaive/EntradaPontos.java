@@ -27,7 +27,7 @@ public class EntradaPontos {
             double y = gerador.nextInt(alcance) + 1;
 
             Cluster temp = new Cluster(x, y);
-            System.out.println("x: " + x + " Y: " + y);
+          //  System.out.println("x: " + x + " Y: " + y);
             c.add(temp);
         }
     }
@@ -37,7 +37,7 @@ public class EntradaPontos {
 
         CriarRegistro registro = new CriarRegistro();
         
-        // Executa 10 vezes
+        // Executa os testes 10 vezes
         for (int i = 0; i < 10; i++) {
             ArrayList<Cluster> c = new ArrayList<Cluster>();
             geraPontos(c);
@@ -46,10 +46,16 @@ public class EntradaPontos {
 
             Distancia4 d = new Distancia4();
             int tam = c.size();
-            System.out.println("Novos pontos:");
+            
+            //A complexidade do calculo da clusterização é O(n³)
+            
+            //Executa n vezes e paga O(n) 
+           // System.out.println("Novos pontos:");
             for (int k = 0; k < tam - 1; k++) {
+            	
+            	//Executa n vezes para calcular a distancia de cada ponto n vezes e paga O(n²)
                 d.calculaDistancia(c);
-                System.out.println("Clusterizando...");
+              //  System.out.println("Clusterizando...");
             }
 
             long tempoFim = System.nanoTime(); // Marca o fim do tempo de execução
@@ -57,15 +63,18 @@ public class EntradaPontos {
             tempoTotal += tempoExecucao;
             
            // registro.RegistrarTempo(nTestes, alcance, tempoTotal);;
+            
+            c.get(0).mostra();
         }
 
         double tempoMedioNano = (double) tempoTotal / 10.0; // Tempo médio em nanosegundos
         double tempoMedioSegundos = tempoMedioNano / 1_000_000_000.0; // Tempo médio em segundos
-
+        
+        
         
         registro.RegistrarTempo(nTestes, alcance, tempoMedioNano, tempoMedioSegundos);
-        System.out.println("Tempo médio de execução: " + tempoMedioNano + " nanosegundos");
-        System.out.println("Tempo médio de execução: " + tempoMedioSegundos + " segundos");
+       // System.out.println("Tempo médio de execução: " + tempoMedioNano + " nanosegundos");
+       // System.out.println("Tempo médio de execução: " + tempoMedioSegundos + " segundos");
     }
 
 }

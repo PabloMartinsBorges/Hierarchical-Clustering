@@ -5,10 +5,10 @@ public class Arvbin<T extends Comparable<T>>
 {
 	private T val;   /* Valor armazenado na raiz. */
 
-	/* Referências para subárvores. */
+	/* Referï¿½ncias para subï¿½rvores. */
 	private Arvbin<T> esq, dir;
 
-	/* Construtor de árvore sem sub-ávores (dir = esq = null). É fornecido apenas o valor da raiz. */
+	/* Construtor de ï¿½rvore sem sub-ï¿½vores (dir = esq = null). ï¿½ fornecido apenas o valor da raiz. */
 	public Arvbin(T valor)
 	{
 		val = valor;
@@ -16,15 +16,17 @@ public class Arvbin<T extends Comparable<T>>
 		dir = null;
 	}
 
-	/* Construtor de árvore com sub-ávores. São fornecidos
-	o valor da raiz e as subárvores, que devem ter sido 
-	construídas previamente.*/
+	/* Construtor de ï¿½rvore com sub-ï¿½vores. Sï¿½o fornecidos
+	o valor da raiz e as subï¿½rvores, que devem ter sido 
+	construï¿½das previamente.*/
 	public Arvbin(T valor, Arvbin<T> arvEsq, Arvbin<T> arvDir)
 	{
 		val = valor;
 		esq = arvEsq;
 		dir = arvDir;
 	}
+	
+	
 
 	/* Retorna o valor armazenado na raiz. */
 	public T retornaVal()
@@ -32,15 +34,15 @@ public class Arvbin<T extends Comparable<T>>
 		return val;
 	}
 
-	/* Retorna a subárvore esquerda 
-	   (ou null se não houver). */
+	/* Retorna a subï¿½rvore esquerda 
+	   (ou null se nï¿½o houver). */
 	public Arvbin<T> retornaEsq()
 	{
 		return esq;
 	}
 
-	/* Retorna a subárvore direita 
-    (ou null se não houver). */
+	/* Retorna a subï¿½rvore direita 
+    (ou null se nï¿½o houver). */
 	public Arvbin<T> retornaDir()
 	{
 		return dir;
@@ -52,19 +54,19 @@ public class Arvbin<T extends Comparable<T>>
 		val = valor;
 	}
 
-	/* Redefine a subárvore esquerda, apagando a antiga se houver. */
+	/* Redefine a subï¿½rvore esquerda, apagando a antiga se houver. */
 	public void defineEsq(Arvbin<T> filho)
 	{
 		esq = filho;
 	} 
 
-	/* Redefine a subárvore direita, apagando a antiga se houver. */
+	/* Redefine a subï¿½rvore direita, apagando a antiga se houver. */
 	public void defineDir(Arvbin<T> filho)
 	{
 		dir = filho;
 	}
 
-	/* Imprime o conteúdo da árvore em pré-ordem */
+	/* Imprime o conteï¿½do da ï¿½rvore em prï¿½-ordem */
 	public void mostra()
 	{
 		System.out.print("(" + val);
@@ -75,19 +77,19 @@ public class Arvbin<T extends Comparable<T>>
 		System.out.print(")");
 	}
 	
-	/* Verifica se um valor está na árvore. Se estiver, retorna um ponteiro para o
-	   o nó que tem esse valor. Caso contrário, retorna null. */
+	/* Verifica se um valor estï¿½ na ï¿½rvore. Se estiver, retorna um ponteiro para o
+	   o nï¿½ que tem esse valor. Caso contrï¿½rio, retorna null. */
 	public Arvbin<T> busca(T valor)
 	{
 		Arvbin<T> ret;
 
-		/* Se é igual ao valor armazenado, não precisa procurar mais. O nó é a raiz. */
+		/* Se ï¿½ igual ao valor armazenado, nï¿½o precisa procurar mais. O nï¿½ ï¿½ a raiz. */
 		if (valor.compareTo(val) == 0)
 		{
 			return this;
 		}
 
-		/* Senão, começa procurando na subárvore esquerda. */
+		/* Senï¿½o, comeï¿½a procurando na subï¿½rvore esquerda. */
 		if (esq != null)
 		{
 			ret = esq.busca(valor);
@@ -96,15 +98,15 @@ public class Arvbin<T extends Comparable<T>>
 				return ret;
 		}
 
-		/* Se chega a esse ponto, estará na árvore se, e somente se, 
-	     estiver na subárvore direita */
+		/* Se chega a esse ponto, estarï¿½ na ï¿½rvore se, e somente se, 
+	     estiver na subï¿½rvore direita */
 		if (dir != null) 
 			return dir.busca(valor);
 		
 		return null;
 	}
 	
-	/* Calcula e retorna o número de nós na árvore. */
+	/* Calcula e retorna o nï¿½mero de nï¿½s na ï¿½rvore. */
 	public int contaNos()
 	{
 		if((esq == null) && (dir == null))
@@ -121,7 +123,7 @@ public class Arvbin<T extends Comparable<T>>
 		return 1 + nosEsq + nosDir;
 	}
 	
-	/* Calcula e retorna a altura da árvore. */
+	/* Calcula e retorna a altura da ï¿½rvore. */
 	public int calculaAltura()
 	{
 		if((esq == null) && (dir == null))
@@ -138,7 +140,7 @@ public class Arvbin<T extends Comparable<T>>
 		return 1 + Math.max(altEsq, altDir);
 	}
 	
-	/* Calcula e retorna o maior valor contido na árvore. */
+	/* Calcula e retorna o maior valor contido na ï¿½rvore. */
 	public T calculaMaximo()
 	{
 		if((esq == null) && (dir == null))
@@ -171,7 +173,7 @@ public class Arvbin<T extends Comparable<T>>
 		return val;
 	}
 	
-	/* Calcula a soma dos valores dos nós de uma árvore de inteiros. */
+	/* Calcula a soma dos valores dos nï¿½s de uma ï¿½rvore de inteiros. */
 	public static int calculaSoma(Arvbin<Integer> no)
 	{
 		if(no == null)
@@ -188,7 +190,7 @@ public class Arvbin<T extends Comparable<T>>
 		return acumulado;
 	}
 	
-	/* Resolução da questão 1 disponível no moodle. */
+	/* Resoluï¿½ï¿½o da questï¿½o 1 disponï¿½vel no moodle. */
 	public int contaNosIntervalo(T min, T max)
 	{
 		if((esq == null) && (dir == null))
@@ -213,14 +215,14 @@ public class Arvbin<T extends Comparable<T>>
 		return noCont + nosEsq + nosDir;
 	}
 	
-	/* Resolução da questão 2 disponível no moodle. */
+	/* Resoluï¿½ï¿½o da questï¿½o 2 disponï¿½vel no moodle. */
 	public static int verificaArvoreSoma(Arvbin<Integer> arvore)
 	{
-		/* Caso base: se é uma subárvore vazia, deve retornar 0. */
+		/* Caso base: se ï¿½ uma subï¿½rvore vazia, deve retornar 0. */
 		if(arvore == null)
 			return 0;
 		
-		/* Caso base: se é uma folha, retorna o valor contido no nó. */
+		/* Caso base: se ï¿½ uma folha, retorna o valor contido no nï¿½. */
 		if((arvore.esq == null) && (arvore.dir == null))
 			return arvore.val;
 		
@@ -234,8 +236,8 @@ public class Arvbin<T extends Comparable<T>>
 		if(arvore.dir != null)
 			somaDireita = verificaArvoreSoma(arvore.dir);
 			
-		/* Agora devemos verificar se o valor do nó corresponde à soma dos valores
-		 * contidos nas subárvores esquerda e direita. */
+		/* Agora devemos verificar se o valor do nï¿½ corresponde ï¿½ soma dos valores
+		 * contidos nas subï¿½rvores esquerda e direita. */
 		if((somaEsquerda != Integer.MIN_VALUE) && (somaDireita != Integer.MIN_VALUE)
 				&& (arvore.val == somaEsquerda + somaDireita))
 			return arvore.val + somaEsquerda + somaDireita;
@@ -243,7 +245,7 @@ public class Arvbin<T extends Comparable<T>>
 		return Integer.MIN_VALUE;
 	}
 	
-	/* Resolução da questão 3 disponível no moodle. */
+	/* Resoluï¿½ï¿½o da questï¿½o 3 disponï¿½vel no moodle. */
 	public boolean eIgual(Arvbin<T> outra)
 	{
 		if(this.esq == null && this.dir == null)
@@ -293,18 +295,18 @@ public class Arvbin<T extends Comparable<T>>
 			return false;
 	}
 	
-	/* Calcula e retorna o diâmetro da árvore, isto é, o número
-	 * de nós contido no maior caminho de um nó para outro nó da
-	 * árvore. */
+	/* Calcula e retorna o diï¿½metro da ï¿½rvore, isto ï¿½, o nï¿½mero
+	 * de nï¿½s contido no maior caminho de um nï¿½ para outro nï¿½ da
+	 * ï¿½rvore. */
 	public int calculaDiametro()
 	{
-		/* Caso base, quando é uma folha. */
+		/* Caso base, quando ï¿½ uma folha. */
 		if((esq == null) && (dir == null))
 		{
 			return 1;
 		}
 		
-		/* Calcula a altura das subárvores esquerda e direita do nó. */
+		/* Calcula a altura das subï¿½rvores esquerda e direita do nï¿½. */
 		int alturaEsq = 0, alturaDir = 0;
 		
 		if(esq != null)
@@ -315,9 +317,9 @@ public class Arvbin<T extends Comparable<T>>
 		
 		int maxDistanciaNo = alturaEsq + alturaDir + 1;
 		
-		/* Nesse ponto, temos a maior distância entre dois nós da árvore
-		 * que passa pelo nó corrente (this). Agora devemos calcular esse
-		 * valor para as subárvores esquerda e direita, comparando depois. */		
+		/* Nesse ponto, temos a maior distï¿½ncia entre dois nï¿½s da ï¿½rvore
+		 * que passa pelo nï¿½ corrente (this). Agora devemos calcular esse
+		 * valor para as subï¿½rvores esquerda e direita, comparando depois. */		
 		
 		int maxDistanciaEsq = 0, maxDistanciaDir = 0;
 		
@@ -335,20 +337,20 @@ public class Arvbin<T extends Comparable<T>>
 			return maxDistanciaFilhos;
 	}
 	
-	/* Método que realiza a impressão de todos os caminhos da raiz para uma folha. */
+	/* Mï¿½todo que realiza a impressï¿½o de todos os caminhos da raiz para uma folha. */
 	public void imprimeTodosCaminhos(Deque<T> caminhos)
 	{
-		/* Adiciona o nó no caminho. */
+		/* Adiciona o nï¿½ no caminho. */
 		caminhos.addLast(val);
 
-		/* Caso base: quando é uma folha. */
+		/* Caso base: quando ï¿½ uma folha. */
 		if((esq == null) && (dir == null))
 		{
 			/* Chegou-se ao fim do caminho, portanto deve-se imprimi-lo. */
 			imprimeCaminho(caminhos);
 		}
 
-		/* Caso geral: deve-se fazer a recursão para os nós esquerdo (se houver) e 
+		/* Caso geral: deve-se fazer a recursï¿½o para os nï¿½s esquerdo (se houver) e 
 		 * para o direito (se houver). */
 		
 		if(esq != null)
@@ -357,12 +359,12 @@ public class Arvbin<T extends Comparable<T>>
 		if(dir != null)
 			dir.imprimeTodosCaminhos(caminhos);
 		
-		/* Remove o nó corrente do caminho após as chamadas recursivas para os
-		 * nós esquerdo e direito. */ 
+		/* Remove o nï¿½ corrente do caminho apï¿½s as chamadas recursivas para os
+		 * nï¿½s esquerdo e direito. */ 
 		caminhos.removeLast();
 	}
 
-	/* Método privado auxiliar que imprime os nós contidos na estrutura caminhos. */
+	/* Mï¿½todo privado auxiliar que imprime os nï¿½s contidos na estrutura caminhos. */
 	private void imprimeCaminho(Deque<T> caminhos)
 	{
 		Iterator<T> iterator = caminhos.iterator();

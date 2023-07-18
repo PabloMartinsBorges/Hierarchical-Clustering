@@ -34,8 +34,8 @@ public class Distancia4 {
         for (Cluster cluster : lista) {
             System.out.println(cluster);
         }
-        System.out.println("Distância entre os clusters mais próximos: " + menorDistancia);
-        System.out.println("Centroide do Novo Cluster: (" + novoCluster.coord[0] + ", " + novoCluster.coord[1] + ")");
+      //  System.out.println("Distância entre os clusters mais próximos: " + menorDistancia);
+      //  System.out.println("Centroide do Novo Cluster: (" + novoCluster.coord[0] + ", " + novoCluster.coord[1] + ")");
     }
 
     private double calcularDistancia(Cluster c1, Cluster c2) {

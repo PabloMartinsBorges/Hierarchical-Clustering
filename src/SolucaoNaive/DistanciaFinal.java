@@ -30,11 +30,11 @@ public class DistanciaFinal {
         lista.remove(cluster2);
 
         // Exibir os clusters e o centroide do novo cluster formado
-        System.out.println("Clusters após a união:");
+      //  System.out.println("Clusters após a união:");
         for (Cluster cluster : lista) {
             System.out.println(cluster);
         }
-        System.out.println("Centroide do Novo Cluster: (" + novoCluster.coord[0] + ", " + novoCluster.coord[1] + ")");
+       // System.out.println("Centroide do Novo Cluster: (" + novoCluster.coord[0] + ", " + novoCluster.coord[1] + ")");
     }
 
     private double calcularDistancia(Cluster c1, Cluster c2) {

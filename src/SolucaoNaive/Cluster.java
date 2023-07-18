@@ -107,6 +107,16 @@ public class Cluster implements Comparable<Cluster>{
 		return "Cluster [qtdPontos=" + qtdPontos +" Coord: " + Arrays.toString(coord) +" ]";
 	}
 
+	
+	public void mostra()
+	{
+		System.out.print("(" + this);
+		if (fEsq != null)
+			fEsq.mostra();
+		if (fDir != null)
+			fDir.mostra();
+		System.out.print(")");
+	}
 
 	
 	
