@@ -13,7 +13,7 @@ public class CriarRegistro {
 	private String url;
 	
 	public CriarRegistro() {
-		url = "C:\\Users\\Pablo Martins Borges\\Desktop\\registroCluster.csv";
+		url = "registroCluster.csv";
 	}
 	
 	public CriarRegistro(String endereco) {
